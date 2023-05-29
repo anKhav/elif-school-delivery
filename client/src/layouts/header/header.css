@@ -1,0 +1,28 @@
+.header{
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.nav__link{
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 700;
+}
+.nav__link:not(:last-child){
+    border-right: 1px solid #6e6e6e;
+    padding-right: 10px;
+}
+.nav__link.active{
+    color: #145e45;
+}
