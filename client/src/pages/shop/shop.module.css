@@ -1,3 +1,8 @@
 .shop{
     display: flex;
+    width: 100vw;
+    gap: 20px;
+}
+.aside{
+    width: 400px;
 }

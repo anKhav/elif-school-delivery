@@ -1,0 +1,19 @@
+.input{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: 1px solid var(--primary-color--dark);
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 20px;
+    color: var(--primary-color--dark);
+    padding: 10px 20px;
+}
+.input::placeholder{
+    text-align: center;
+}
+.label{
+    font-size: 18px;
+    line-height: 20px;
+    color: var(--primary-color--dark);
+}

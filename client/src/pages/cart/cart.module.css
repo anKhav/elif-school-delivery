@@ -1,0 +1,19 @@
+.cart{
+    width: 100vw;
+}
+.aside{
+    width: 50%;
+}
+.aside__list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+}
+.aside__item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}

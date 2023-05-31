@@ -6,9 +6,9 @@ interface Props {
 }
 const Aside = ({children}:Props) => {
     return (
-        <aside className={styles.aside}>
+        <div className={styles.aside}>
             {children}
-        </aside>
+        </div>
     );
 };
 

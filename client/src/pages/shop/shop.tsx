@@ -6,9 +6,11 @@ import styles from './shop.module.css'
 const Shop = () => {
     return (
         <main className={styles.shop}>
-            <Aside>
-                <ShopList/>
-            </Aside>
+            <aside className={styles.aside}>
+                <Aside>
+                    <ShopList/>
+                </Aside>
+            </aside>
             <SingleShop/>
         </main>
     );

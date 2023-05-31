@@ -7,7 +7,7 @@
   --primary-color--dark:#000000;
   --primary-color--light:#ffffff;
   --secondary-color--light:rgba(81, 105, 74, 0.5);
-  --secondary-color--dark:rgba(81, 105, 74, 1);
+  --secondary-color--dark: rgb(36, 73, 30);
 }
 main{
   padding: 0 20px;
