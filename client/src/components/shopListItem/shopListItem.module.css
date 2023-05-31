@@ -1,0 +1,20 @@
+.shop{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    padding: 30px 10px;
+    border: 1px solid var(--primary-color--dark);
+    border-radius: 10px;
+}
+.name{
+    color: var(--primary-color--dark);
+    font-size: 18px;
+    line-height: 20px;
+    padding: 0 20px;
+    font-weight: 400;
+}
+.active{
+    background-color:var(--secondary-color--light);
+}

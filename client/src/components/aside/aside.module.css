@@ -1,0 +1,6 @@
+.aside{
+    border:1px solid var(--primary-color--dark);
+    box-sizing: border-box;
+    padding: 20px;
+    max-width: 400px;
+}

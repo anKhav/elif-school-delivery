@@ -3,3 +3,19 @@
   margin: 0;
   padding: 0;
 }
+#root {
+  --primary-color--dark:#000000;
+  --primary-color--light:#ffffff;
+  --secondary-color--light:rgba(81, 105, 74, 0.5);
+  --secondary-color--dark:rgba(81, 105, 74, 1);
+}
+main{
+  padding: 0 20px;
+}
+body{
+  width: 100vw;
+  overflow-x: hidden;
+}
+a{
+  text-decoration: none;
+}
