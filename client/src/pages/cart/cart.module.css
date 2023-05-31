@@ -1,8 +1,12 @@
 .cart{
     width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 .aside{
     width: 50%;
+    max-width: 500px;
 }
 .aside__list{
     display: flex;
@@ -16,4 +20,22 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
+}
+.orders{
+    width: 50%;
+    border: 1px solid var(--primary-color--dark);
+    border-radius: 5px;
+    padding: 20px;
+    overflow-y: scroll;
+    height: calc(100vh - 200px);
+}
+.footer{
+    flex-basis: 100%;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 24px;
+    line-height: 26px;
+    color: var(--primary-color--dark);
 }

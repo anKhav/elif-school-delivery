@@ -3,4 +3,6 @@
     border-radius: 5px;
     box-sizing: border-box;
     padding:40px 30px;
+    max-height:calc(100vh - 200px);
+    overflow-y: scroll;
 }

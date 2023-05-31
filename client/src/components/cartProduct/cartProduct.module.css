@@ -1,0 +1,34 @@
+.product{
+    border: 1px solid var(--primary-color--dark);
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 20px;
+    color: var(--primary-color--dark);
+    display: flex;
+    gap: 20px;
+}
+.content{
+display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.image{
+    flex: 1 1 100%;
+    height: 300px;
+    width: 500px;
+    background-color: grey;
+    border-radius: 5px;
+}
+
+.name{
+    margin-top: 20px;
+}
+.price{
+}
+.input{
+    padding: 10px 20px;
+    border-radius: 5px;
+}

@@ -1,0 +1,23 @@
+export const orders = [
+    {
+        id:1,
+        image:'sdds',
+        name:'Name',
+        price:10,
+        amount:1
+    },
+    {
+        id:2,
+        image:'sdds2',
+        name:'Name2',
+        price:11,
+        amount:5
+    },
+    {
+        id:2,
+        image:'sdds',
+        name:'Name3',
+        price:90,
+        amount:1
+    },
+]
