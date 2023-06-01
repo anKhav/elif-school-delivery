@@ -10,7 +10,6 @@ import {makeRightUrlStr} from "./utils/functions.js"
 
 import SingleShop from "./pages/singleShop/singleShop.tsx";
 
-
 const App = () => {
     return (
         <Routes>
