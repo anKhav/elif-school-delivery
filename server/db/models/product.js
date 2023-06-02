@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Product.belongsToMany(models.Order,{through:models.ProductOrder, foreignKey:'productId'})
-      Product.belongsTo(models.Shop)
+      Product.belongsTo(models.Shop, {
+        foreignKey:'shopId'
+      })
     }
   }
   Product.init({

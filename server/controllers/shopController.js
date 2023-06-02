@@ -19,12 +19,12 @@ class ShopController{
     async update(req, res, next){
         const {id} = req.params
         const {newName} = req.body
-        const shop = ShopService.update(id, newName)
+        const shop = await ShopService.update(id, newName)
         res.json(shop)
     }
     async delete(req, res, next){
         const {id} = req.params
-        const shop = ShopService.delete(id)
+        const shop = await ShopService.delete(id)
         res.json(shop)
     }
 }

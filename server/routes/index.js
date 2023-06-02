@@ -8,6 +8,6 @@ const productRouter = require('./productRouter')
 
 // router.use('/user', userRouter)
 router.use('/shop', shopRouter)
-// router.use('/product', productRouter)
+router.use('/product', productRouter)
 
 module.exports = router
