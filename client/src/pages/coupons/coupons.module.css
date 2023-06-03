@@ -1,0 +1,15 @@
+.coupons{
+    width: 100%;
+}
+.list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.item{
+    width: calc(33% - 40px);
+    list-style: none;
+}
