@@ -17,6 +17,11 @@ class ProductController{
         const product = await ProductService.get(id)
         res.json(product)
     }
+    async getByShop(req, res, next){
+        const {shop} = req.params
+        const products = await ProductService.getByShop(shop)
+        res.json(products)
+    }
     async update(req, res, next){
         const {id} = req.params
         const {newName} = req.body

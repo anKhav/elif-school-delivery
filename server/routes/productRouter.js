@@ -6,6 +6,7 @@ const router = new Router()
 router.post('/',ProductController.create)
 router.get('/all',ProductController.getAll)
 router.get('/:id',ProductController.get)
+router.get('/all/:shop',ProductController.getByShop)
 router.put('/:id',ProductController.update)
 router.delete('/:id',ProductController.delete)
 

@@ -9,14 +9,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        type: Sequelize.INTEGER
+      userName: {
+        type: Sequelize.STRING
       },
-      shopAddress: {
+      userEmail: {
+        type: Sequelize.STRING
+      },
+      userPhone: {
         type: Sequelize.STRING
       },
       userAddress: {
         type: Sequelize.STRING
+      },
+      shopAddress: {
+        type: Sequelize.STRING
+      },
+      totalPrice:{
+        type:Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
