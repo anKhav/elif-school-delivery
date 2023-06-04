@@ -2,26 +2,28 @@ const {Product, Order} = require('../db/models')
 const ProductOrderService = require('./productOrderService')
 class OrderService {
     async createOrder (products, userName, userEmail, userPhone, userAddress, shopAddress, totalPrice) {
-        return await Order.create({userName, userEmail, userPhone, userAddress, shopAddress, totalPrice})
+        const order = await Order.create({userName, userEmail, userPhone, userAddress, shopAddress, totalPrice})
 
-        // const productOrder  = await Promise.all(products.map(async (product) => {
-        //     const productModel = await ProductOrderService.createProductOrder(product.id, order.id, product.amount)
-        //     return productModel.dataValues
-        // }));
-        // console.log(productOrder);
-        //
-        // return {
-        //     orderId: order.dataValues.id,
-        //     userData: {
-        //         userName: order.dataValues.userName,
-        //         userEmail: order.dataValues.userEmail,
-        //         userPhone: order.dataValues.userPhone,
-        //         userAddress: order.dataValues.userAddress,
-        //         shopAddress: order.dataValues.shopAddress,
-        //     },
-        //     totalPrice: order.dataValues.totalPrice,
-        //     products: productOrder
-        // }
+        const productOrder  = await Promise.all(products.map(async (product) => {
+            const productModel = await ProductOrderService.createProductOrder(product.id, order.id, product.amount)
+            return productModel.dataValues
+        }));
+        console.log("productOrder "+productOrder);
+        console.log("order "+order);
+
+
+        return {
+            orderId: order.dataValues.id,
+            userData: {
+                userName: order.dataValues.userName,
+                userEmail: order.dataValues.userEmail,
+                userPhone: order.dataValues.userPhone,
+                userAddress: order.dataValues.userAddress,
+                shopAddress: order.dataValues.shopAddress,
+            },
+            totalPrice: order.dataValues.totalPrice,
+            products: productOrder
+        }
     }
 
     async getOneOrder (orderId) {
