@@ -16,10 +16,10 @@ module.exports = {
   },
   production: {
     username: 'postgres',
-    password: 'uAh7SLiMphmASgDiojIk',
+    password: '4JoXDVGJQNzi7Sufqnbq',
     database: 'railway',
-    port:6786,
-    host: 'containers-us-west-177.railway.app',
+    port:7722,
+    host: 'containers-us-west-95.railway.app',
     dialect: "postgres",
   },
 };
