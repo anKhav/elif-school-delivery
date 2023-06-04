@@ -21,7 +21,6 @@ class ProductService{
         return await Product.findAll()
     }
     async get(productId){
-        console.log('id'+productId)
         return await Product.findOne({where:{id:productId}})
     }
     async getByShop(shopId){

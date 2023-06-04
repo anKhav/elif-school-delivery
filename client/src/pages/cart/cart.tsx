@@ -32,12 +32,37 @@ const Cart = () => {
         totalPrice:200,
         ...formData
     }
-    console.log(order);
+    console.log(JSON.stringify(order));
+    const mock = {
+        "products":[
+            {
+                "id": 2,
+                "name": "ChickenBurger",
+                "image": "f708739e-52a2-4974-b554-3a8e6caeddb6.jpg",
+                "price": 3,
+                "shopId": 2
+            },
+            {
+                "id": 4,
+                "name": "Cola",
+                "image": "ef76c230-5778-48d3-b31a-5e9955a3f8e0.jpg",
+                "price": 5,
+                "shopId": 2
+            }
+        ],
+        "userName": "Nick",
+        "userEmail":"g",
+        "userPhone": "+3",
+        "userAddress":"Kyiv 1",
+        "shopAddress":"Kyiv 2",
+        "totalPrice":200
+    }
+    console.log(JSON.stringify(mock));
     const sendOrder = async (data) => {
         fetch('https://elif-school-delivery-production.up.railway.app/api/order', {
             mode:'no-cors',
             method: 'POST',
-            body: JSON.stringify(data),
+            body: mock,
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },

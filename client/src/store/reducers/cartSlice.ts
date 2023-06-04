@@ -25,14 +25,14 @@ export const cartSlice = createSlice({
                 state.cart[itemIndex].amount += 1
             } else {
                 console.log(action.payload);
-                const tempProduct = {...action.payload,quantity: 1}
+                const tempProduct = {...action.payload,amount: 1}
                 state.cart.push(tempProduct)
             }
         },
         setCardProductQuantity:(state, {payload}) => {
             state.cart = state.cart.map(product => product.name === payload.name ? {
                 ...product,
-                quantity: payload.quantity
+                amount: payload.amount
             } : product)
         },
         removeProduct:(state, action) => {
