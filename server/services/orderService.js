@@ -1,5 +1,6 @@
 const {Product, Order} = require('../db/models')
 const ProductOrderService = require('./productOrderService')
+const ProductService = require('./productService')
 class OrderService {
     async createOrder (products, userName, userEmail, userPhone, userAddress, shopAddress, totalPrice) {
         const order = await Order.create({userName, userEmail, userPhone, userAddress, shopAddress, totalPrice})
@@ -29,20 +30,27 @@ class OrderService {
     }
     async getOrdersByEmail (email) {
         const ordersData = await Order.findAll({where: {userEmail:email}})
-        console.log('ordersData '+ordersData)
+
         if (!ordersData || ordersData.length === 0){
             return {error:'Please enter valid data.'}
         }
 
-        return await Promise.all(ordersData.map(async (order) => {
-                return {
-                        orders:{
-                            ...order.dataValues,
-                            products: await ProductOrderService.getProductOrder(order.id)
-                        }
-                }
+
+        const orders = await Promise.all(ordersData.map(async (order) => {
+            const productOrder =  await ProductOrderService.getProductOrder(order.dataValues.id)
+            const products = await Promise.all(productOrder.map(async (product) => {
+                const res = await ProductService.get(product.productId)
+                return res
             }))
+            return {...order.dataValues,products}
+            }))
+
+        return orders
     }
+
+    // const orders = await Promise.all(ordersData.map(async (order) => {
+    //     return await ProductOrderService.getProductOrder(order.dataValues.id)
+    // }))
     async getOrdersByPhone(phone) {
         const ordersData = await Order.findAll({where: {userPhone:phone}})
         if (!ordersData || ordersData.length === 0){
