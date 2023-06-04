@@ -5,6 +5,7 @@ import CartProductList from "../../components/cartProductList/cartProductList.ts
 import MyButton from "../../components/UI/MyButton/MyButton.tsx";
 import {useAppSelector} from "../../hooks/redux.ts";
 import {SetStateAction, useState} from "react";
+import axios from "axios";
 
 interface formData {
     userName:string,
@@ -58,21 +59,11 @@ const Cart = () => {
         "totalPrice":200
     }
     console.log(JSON.stringify(mock));
-    const sendOrder = async (data) => {
-        fetch('https://elif-school-delivery-production.up.railway.app/api/order', {
-            method: 'POST',
-            body: mock,
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
+    const sendOrder = async (datas) => {
+        const res = await axios.post('https://elif-school-delivery-production.up.railway.app/api/order',{datas})
+        const data = await res.data
+        console.log(data);
+        return data
     }
     return (
         <main className={styles.cart}>

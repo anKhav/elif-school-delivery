@@ -4,6 +4,7 @@ const {where} = require("sequelize");
 class ProductOrderService {
     async createProductOrder (productId, orderId, amount) {
         const productOrder = await ProductOrder.create({productId, orderId, amount})
+        console.log(productOrder);
         const product = await ProductService.get(productOrder.dataValues.productId)
 
         return product
