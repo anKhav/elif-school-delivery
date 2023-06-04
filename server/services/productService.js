@@ -24,7 +24,10 @@ class ProductService{
         return await Product.findOne({where:{id}})
     }
     async getByShop(shopId){
-        return await Product.findAll({where:{shopId}})
+        return {
+            shopId,
+            products:await Product.findAll({where:{shopId}})
+        }
     }
     async update(id, newName){
         const shop = await Product.findOne({where:{id}})
