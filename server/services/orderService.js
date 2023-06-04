@@ -30,7 +30,7 @@ class OrderService {
     async getOrdersByEmail (email) {
         const ordersData = await Order.findAll({where: {userEmail:email}})
         console.log('ordersData '+ordersData)
-        if (ordersData || ordersData.length === 0){
+        if (!ordersData || ordersData.length === 0){
             return {error:'Please enter valid data.'}
         }
 
@@ -45,7 +45,7 @@ class OrderService {
     }
     async getOrdersByPhone(phone) {
         const ordersData = await Order.findAll({where: {userPhone:phone}})
-        if (ordersData || ordersData.length === 0){
+        if (!ordersData || ordersData.length === 0){
             return {error:'Please enter valid data.'}
         }
 
