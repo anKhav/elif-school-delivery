@@ -8,12 +8,13 @@ class OrderController{
     }
     async getAllByEmail (req, res, next) {
         const {email} = req.body
+        console.log(email);
         const response = await OrderService.getOrdersByEmail(email, next)
         res.json(response)
     }
     async getAllByPhone (req, res, next) {
-        const {email} = req.body
-        const response = await OrderService.getOrdersByEmail(email, next)
+        const {phone} = req.body
+        const response = await OrderService.getOrdersByPhone(phone, next)
         res.json(response)
     }
 }
