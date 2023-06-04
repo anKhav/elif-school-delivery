@@ -37,7 +37,7 @@ class OrderService {
 
 
         const orders = await Promise.all(ordersData.map(async (order) => {
-            const productOrder =  await ProductOrderService.getProductOrder(order.dataValues.id)
+            const productOrder =  await ProductOrderService.getProductOrder(order.id)
             return productOrder
             }))
 
