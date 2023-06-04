@@ -46,6 +46,7 @@ class OrderService {
             }
         }
         const ordersData = await getOrders()
+        console.log(ordersData);
         if (ordersData.length === 0){
             return {error:'Please enter valid data.'}
         }
