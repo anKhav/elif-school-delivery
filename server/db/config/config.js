@@ -15,7 +15,11 @@ module.exports = {
     dialect: "postgres",
   },
   production: {
-    database: process.env.DB_URL,
+    username: 'postgres',
+    password: 'uAh7SLiMphmASgDiojIk',
+    database: 'railway',
+    port:6786,
+    host: 'containers-us-west-177.railway.app',
     dialect: "postgres",
   },
 };
