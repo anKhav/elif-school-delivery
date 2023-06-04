@@ -18,7 +18,8 @@ class ProductOrderService {
             return product.dataValues
             // return {...productData.dataValues, amount:product.amount}
         }));
-        return products
+        return productOrders
+        // return products
     }
 
 }
