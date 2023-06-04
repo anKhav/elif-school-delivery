@@ -5,7 +5,7 @@ class OrderService {
     async createOrder (products, userName, userEmail, userPhone, userAddress, shopAddress, totalPrice) {
         const order = await Order.create({userName, userEmail, userPhone, userAddress, shopAddress, totalPrice})
 
-        const productOrder  = await Promise.all(products.map(async (product) => {
+        const productsOrder  = await Promise.all(products.map(async (product) => {
             const productModel = await ProductOrderService.createProductOrder(product.id, order.id, product.amount)
             return productModel.dataValues
         }));
@@ -21,7 +21,7 @@ class OrderService {
                 shopAddress: order.dataValues.shopAddress,
             },
             totalPrice: order.dataValues.totalPrice,
-            products: productOrder
+            products: productsOrder
         }
     }
 
@@ -39,8 +39,8 @@ class OrderService {
         const orders = await Promise.all(ordersData.map(async (order) => {
             const productOrder =  await ProductOrderService.getProductOrder(order.dataValues.id)
             const products = await Promise.all(productOrder.map(async (product) => {
-                console.log(product);
-                const res = await ProductService.get(product.productId)
+                console.log(product.dataValues.productId);
+                const res = await ProductService.get(product.dataValues.productId)
                 return res
             }))
             return {...order.dataValues,products}
