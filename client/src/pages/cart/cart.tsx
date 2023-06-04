@@ -60,7 +60,7 @@ const Cart = () => {
     }
     console.log(JSON.stringify(mock));
     const sendOrder = async (datas) => {
-        const res = await axios.post('https://elif-school-delivery-production.up.railway.app/api/order',{datas})
+        const res = await axios.post('https://elif-school-delivery-production.up.railway.app/api/order',{...datas})
         const data = await res.data
         console.log(data);
         return data
