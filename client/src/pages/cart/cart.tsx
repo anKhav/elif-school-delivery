@@ -32,7 +32,7 @@ const Cart = () => {
         shopAddress:'Kyiv 2',
         totalPrice:200
     }
-    console.log(JSON.stringify(order));
+    console.log(order);
     const sendOrder = async (data) => {
         fetch('https://elif-school-delivery-production.up.railway.app/api/order', {
             method: 'POST',
