@@ -1,13 +1,19 @@
-import {orders} from "../../data/orders.ts";
+
 import CartProduct from "../cartProduct/cartProduct.tsx";
 import styles from './cartProductList.module.css'
+import {CartProductInterface} from "../../models/cartProduct.ts";
 
-const CartProductList = () => {
+interface Props{
+    cart:CartProductInterface[]
+}
+
+const CartProductList = ({cart}:Props) => {
+
     return (
         <ul className={styles.order}>
             {
-                orders.map(order => {
-                    return <CartProduct key={`order-${order.id}`} image={order.image} name={order.name} amount={order.amount} price={order.price}/>
+                cart && cart.map(product => {
+                    return <CartProduct key={`order-${product.id}`} image={product.image} name={product.name} amount={product.amount} price={product.price}/>
                 })
             }
         </ul>

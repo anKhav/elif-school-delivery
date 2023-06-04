@@ -1,17 +1,16 @@
-import {shops} from "../../data/shops.ts";
 import {useParams} from "react-router-dom";
 import ShopItem from "../../components/shopItem/shopItem.tsx";
 import styles from './singleShop.module.css'
+import {shopAPI} from "../../services/ShopService.ts";
 
 const SingleShop = () => {
     const {id} = useParams()
-    console.log(id);
-    const shop = shops.find(shop => shop.id === +id)
+    const {data} = shopAPI.useFetchShopProductsQuery(Number(id))
     return (
         <div className={styles.shop}>
             {
-                shop?.menu.map(product => {
-                    return <ShopItem key={product.id} name={product.name} image={product.image}/>
+                data && data.products.map(product => {
+                    return <ShopItem key={product.id} name={product.name} image={product.image} price={product.price}/>
                 })
             }
         </div>
