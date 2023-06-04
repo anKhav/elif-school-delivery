@@ -24,16 +24,36 @@ export const cartSlice = createSlice({
             if(itemIndex >= 0){
                 state.cart[itemIndex].amount += 1
             } else {
-                console.log(action.payload);
                 const tempProduct = {...action.payload,amount: 1}
                 state.cart.push(tempProduct)
             }
         },
-        setCardProductQuantity:(state, {payload}) => {
-            state.cart = state.cart.map(product => product.name === payload.name ? {
-                ...product,
-                amount: payload.amount
-            } : product)
+        decrementProductAmount:(state,{payload}) => {
+            const itemIndex = state.cart.findIndex((item) => {
+                return item.name === payload.name
+            })
+            if(itemIndex >= 0){
+                console.log('dec')
+                state.cart[itemIndex].amount -= 1
+            }
+        },
+        incrementProductAmount:(state,{payload}) => {
+            const itemIndex = state.cart.findIndex((item) => {
+                return item.name === payload.name
+            })
+            if(itemIndex >= 0){
+                console.log('in')
+                state.cart[itemIndex].amount += 1
+            }
+        },
+        setProductAmount:(state,{payload}) => {
+            console.log(payload);
+            const itemIndex = state.cart.findIndex((item) => {
+                return item.name === payload.name
+            })
+            if(itemIndex >= 0){
+                state.cart[itemIndex].amount = payload.amount
+            }
         },
         removeProduct:(state, action) => {
             state.cart = state.cart.filter(product => product.name  !== action.payload)
@@ -44,5 +64,5 @@ export const cartSlice = createSlice({
     },
 })
 
-export const {setCartProduct} = cartSlice.actions
+export const {setCartProduct, clearCart,decrementProductAmount,incrementProductAmount,setProductAmount} = cartSlice.actions
 export default cartSlice.reducer

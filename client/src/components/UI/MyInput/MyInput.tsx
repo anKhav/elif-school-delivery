@@ -4,13 +4,14 @@ interface Props {
     label:string,
     placeholder:string,
     value?:string,
-    onChange?:void
+    required?:boolean,
+    onChange?:React.ChangeEventHandler<HTMLInputElement>
 }
-const MyInput = ({type, label, placeholder, onChange, value } :Props) => {
+const MyInput = ({type, label, placeholder, onChange, value, required } :Props) => {
     return (
         <>
             <label className={styles.label} htmlFor={label}>{label}</label>
-            <input className={styles.input} id={label} type={type} placeholder={placeholder} onChange={onChange} value={value}/>
+            <input className={styles.input} id={label} type={type} placeholder={placeholder} onChange={onChange} value={value} required={required}/>
         </>
     );
 };

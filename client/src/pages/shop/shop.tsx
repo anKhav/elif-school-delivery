@@ -13,7 +13,7 @@ const Shop = () => {
                     <ShopList/>
                 </Aside>
             </aside>
-            {id ? <SingleShop/> : <div>Welcome!Please select a shop!</div>}
+            {id ? <SingleShop/> : <div className={styles.default}>Welcome!Please select a shop!</div>}
         </main>
     );
 };
