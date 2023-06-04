@@ -5,8 +5,10 @@ class OrderService {
         const order = await Order.create({userName, userEmail, userPhone, userAddress, shopAddress, totalPrice})
 
         const productOrder  = await Promise.all(products.map(async (product) => {
-            return await ProductOrderService.createProductOrder(product.id, order.id, product.amount)
+            const productModel = await ProductOrderService.createProductOrder(product.id, order.id, product.amount)
+            return productModel.dataValues
         }));
+        console.log(productOrder);
 
         return {
             orderId: order.dataValues.id,
