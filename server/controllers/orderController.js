@@ -1,8 +1,8 @@
 const OrderService = require('../services/orderService.js')
 class OrderController{
     async create (req, res, next) {
-        const {products, userName, userEmail, userPhone, userAddress, shopAddress} = req.body
-        const data = await OrderService.createOrder(products, userName, userEmail, userPhone, userAddress, shopAddress)
+        const {products, userName, userEmail, userPhone, userAddress, shopAddress, totalPrice} = req.body
+        const data = await OrderService.createOrder(products, userName, userEmail, userPhone, userAddress, shopAddress, totalPrice)
         res.json(data)
     }
     async getAll (req, res, next) {

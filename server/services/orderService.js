@@ -1,8 +1,8 @@
 const {Product, Order} = require('../db/models')
 const ProductOrderService = require('./productOrderService')
 class OrderService {
-    async createOrder (products, userName, userEmail, userPhone, userAddress, shopAddress) {
-        const order = await Order.create({userName, userEmail, userPhone, userAddress, shopAddress})
+    async createOrder (products, userName, userEmail, userPhone, userAddress, shopAddress, totalPrice) {
+        const order = await Order.create({userName, userEmail, userPhone, userAddress, shopAddress, totalPrice})
 
         const productOrder  = await Promise.all(products.map(async (product) => {
             return await ProductOrderService.createProductOrder(product.id, order.id, product.amount)
