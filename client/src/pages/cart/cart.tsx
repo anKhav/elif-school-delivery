@@ -27,7 +27,7 @@ const Cart = () => {
         userAddress:''
     })
     const order = {
-        products:cart,
+        products:[...cart],
         ...formData,
         shopAddress:'Kyiv 2',
         totalPrice:200
