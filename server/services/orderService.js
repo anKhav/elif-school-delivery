@@ -27,28 +27,9 @@ class OrderService {
     async getOneOrder (orderId) {
         return await Order.findOne({where:{orderId}})
     }
-    async getOrders (email, phone, next) {
-        const getOrdersByEmail = async () => {
-            if (email !== ''){
-                return  await Order.findAll({where: {userEmail:email}})
-            }
-        }
-        const getOrdersByPhone = async () => {
-            if (phone !== '') {
-                return await Order.findAll({where: {userPhone: phone}})
-            }
-        }
-        const getOrders = async () => {
-                const responseByEmail = await getOrdersByEmail()
-                const responseByPhone = await getOrdersByPhone()
-            if (!responseByEmail || responseByEmail.length === 0){
-                return await getOrdersByPhone()
-            } else if (!responseByPhone || responseByPhone.length === 0) {
-                return await getOrdersByEmail()
-            }
-        }
-        const ordersData = await getOrders()
-        if (ordersData.length === 0){
+    async getOrdersByEmail (email) {
+        const ordersData = await Order.findAll({where: {userEmail:email}})
+        if (ordersData || ordersData.length === 0){
             return {error:'Please enter valid data.'}
         }
 

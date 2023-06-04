@@ -6,9 +6,14 @@ class OrderController{
         const data = await OrderService.createOrder(products, userName, userEmail, userPhone, userAddress, shopAddress, totalPrice)
         res.json(data)
     }
-    async getAll (req, res, next) {
-        const {email, phone} = req.body
-        const response = await OrderService.getOrders(email, phone, next)
+    async getAllByEmail (req, res, next) {
+        const {email} = req.body
+        const response = await OrderService.getOrdersByEmail(email, next)
+        res.json(response)
+    }
+    async getAllByPhone (req, res, next) {
+        const {email} = req.body
+        const response = await OrderService.getOrdersByEmail(email, next)
         res.json(response)
     }
 }
