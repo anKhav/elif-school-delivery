@@ -15,11 +15,9 @@ class ProductOrderService {
             console.log('product.dataValues'+product.dataValues)
             console.log('product.dataValues.productId'+product.dataValues.productId)
             const productData = await ProductService.get(product.dataValues.productId)
-            return product.dataValues
-            // return {...productData.dataValues, amount:product.amount}
+            return {...productData.dataValues, amount:product.amount}
         }));
-        return productOrders
-        // return products
+        return products
     }
 
 }

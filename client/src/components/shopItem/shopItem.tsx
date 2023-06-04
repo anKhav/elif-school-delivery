@@ -5,15 +5,17 @@ import {setCartProduct} from "../../store/reducers/cartSlice.ts";
 interface Props {
     name:string,
     image:string,
-    price:number
+    price:number,
+    shopId:number
 }
-const ShopItem = ({name, image, price}:Props) => {
+const ShopItem = ({name, image, price, shopId}:Props) => {
     const dispatch = useAppDispatch()
     const product = {
         name,
         price,
         image,
-        amount:1
+        amount:1,
+        shopId
     }
     console.log(product);
     return (

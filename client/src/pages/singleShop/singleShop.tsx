@@ -10,7 +10,7 @@ const SingleShop = () => {
         <div className={styles.shop}>
             {
                 data && data.products.map(product => {
-                    return <ShopItem key={product.id} name={product.name} image={product.image} price={product.price}/>
+                    return <ShopItem key={product.id} name={product.name} image={product.image} price={product.price} shopId={id}/>
                 })
             }
         </div>
