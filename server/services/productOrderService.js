@@ -12,6 +12,7 @@ class ProductOrderService {
         const productOrders =  await ProductOrder.findAll({where:{orderId}})
         console.log('productOrders'+productOrders)
         const products  = await Promise.all(productOrders.map(async (product) => {
+            console.log('product.dataValues'+product.dataValues)
             console.log('product.dataValues.productId'+product.dataValues.productId)
             const productData = await ProductService.get(product.dataValues.productId)
             return {...productData.dataValues, amount:product.amount}
