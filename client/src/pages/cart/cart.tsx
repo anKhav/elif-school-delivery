@@ -60,7 +60,6 @@ const Cart = () => {
     console.log(JSON.stringify(mock));
     const sendOrder = async (data) => {
         fetch('https://elif-school-delivery-production.up.railway.app/api/order', {
-            mode:'no-cors',
             method: 'POST',
             body: mock,
             headers: {
