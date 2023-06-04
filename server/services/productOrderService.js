@@ -11,6 +11,7 @@ class ProductOrderService {
     }
     async getProductOrder (orderId) {
         const productOrders =  await ProductOrder.findAll({where:{orderId}})
+        console.log([...productOrders])
         return [...productOrders]
     }
 
