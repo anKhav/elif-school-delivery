@@ -14,6 +14,10 @@ const PORT = process.env.PORT || 3001
 
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({
+    credentials:true,
+    origin:'http://localhost:5173'
+}))
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(fileUpload({}))
 app.use('/api', router)
