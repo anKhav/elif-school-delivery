@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
     credentials:true,
-    origin:'http://localhost:5173'
+    origin:'http://localhost:5173/cart'
 }))
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(fileUpload({}))
