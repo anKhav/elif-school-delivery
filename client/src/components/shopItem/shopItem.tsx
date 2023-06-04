@@ -3,14 +3,16 @@ import MyButton from "../UI/MyButton/MyButton.tsx";
 import {useAppDispatch} from "../../hooks/redux.ts";
 import {setCartProduct} from "../../store/reducers/cartSlice.ts";
 interface Props {
+    id:number,
     name:string,
     image:string,
     price:number,
     shopId:number
 }
-const ShopItem = ({name, image, price, shopId}:Props) => {
+const ShopItem = ({id, name, image, price, shopId}:Props) => {
     const dispatch = useAppDispatch()
     const product = {
+        id,
         name,
         price,
         image,

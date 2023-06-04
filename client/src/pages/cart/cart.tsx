@@ -28,13 +28,14 @@ const Cart = () => {
     })
     const order = {
         products:[...cart],
-        ...formData,
         shopAddress:'Kyiv 2',
-        totalPrice:200
+        totalPrice:200,
+        ...formData
     }
     console.log(order);
     const sendOrder = async (data) => {
         fetch('https://elif-school-delivery-production.up.railway.app/api/order', {
+            mode:'no-cors',
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

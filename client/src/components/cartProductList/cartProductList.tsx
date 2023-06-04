@@ -13,6 +13,7 @@ const CartProductList = ({cart}:Props) => {
         <ul className={styles.order}>
             {
                 cart && cart.map(product => {
+                    console.log(product);
                     return <CartProduct key={`order-${product.id}`} image={product.image} name={product.name} amount={product.amount} price={product.price}/>
                 })
             }

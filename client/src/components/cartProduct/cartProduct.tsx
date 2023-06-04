@@ -10,7 +10,7 @@ interface Props {
 const CartProduct = ({image, name, amount, price}: Props) => {
     return (
         <div className={styles.product}>
-            <img  src={`https://elif-school-delivery-production.up.railway.app/${image}`} className={styles.image}/>
+            <img alt={name}  src={`https://elif-school-delivery-production.up.railway.app/${image}`} className={styles.image}/>
             <div className={styles.content}>
                 <h4 className={styles.name}>{name}</h4>
                 <span className={styles.price}>${price}</span>
