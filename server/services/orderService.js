@@ -39,9 +39,9 @@ class OrderService {
         const getOrders = async () => {
                 const responseByEmail = await getOrdersByEmail()
                 const responseByPhone = await getOrdersByPhone()
-            if (responseByEmail.length === 0){
+            if (!responseByEmail || responseByEmail.length === 0){
                 return await getOrdersByPhone()
-            } else if (responseByPhone.length === 0) {
+            } else if (!responseByPhone || responseByPhone.length === 0) {
                 return await getOrdersByEmail()
             }
         }
