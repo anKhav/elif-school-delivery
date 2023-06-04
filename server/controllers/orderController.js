@@ -7,6 +7,7 @@ class OrderController{
     }
     async getAllByEmail (req, res, next) {
         const {email} = req.body
+        console.log(req.body)
         const response = await OrderService.getOrdersByEmail(email, next)
         res.json(response)
     }

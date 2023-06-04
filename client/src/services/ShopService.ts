@@ -23,7 +23,9 @@ export const shopAPI = createApi({
             query:(email) => ({
                 url:`/order/email`,
                 method:"POST",
-                body:email
+                body:{
+                    userEmail:email
+                }
             })
         }),
         createOrder: builder.mutation<Order>({
