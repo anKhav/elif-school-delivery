@@ -26,11 +26,11 @@ const History = () => {
         <main className={styles.history}>
             <form className={styles.form}>
                 <MyInput type='email' label='Email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <MyButton label='Search by email' onClick={(e) => searchByEmailHandler(e)}/>
+                <MyButton label='Search by email' onClick={(e:React.MouseEvent<Element,MouseEvent>) => searchByEmailHandler(e)}/>
             </form>
             <form className={styles.form}>
                 <MyInput type='phone' label='Phone' placeholder='Phone' value={phone} onChange={(e) => setPhone(e.target.value)}/>
-                <MyButton label='Search by phone' onClick={(e) => searchByPhoneHandler(e)}/>
+                <MyButton label='Search by phone' onClick={(e:React.MouseEvent<Element,MouseEvent>) => searchByPhoneHandler(e)}/>
             </form>
             <section className={styles.content}>
                 <ul className={styles.order__list}>
