@@ -23,7 +23,7 @@ const History = () => {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [data, setData] = useState('')
-    const [searchByEmail, {data:dataEmail, error:errorEmail}] = shopAPI.useSearchByEmailMutation()
+    const [searchByEmail, {data:dataEmail, error:errorEmail, isError}] = shopAPI.useSearchByEmailMutation()
     const [searchByPhone, {data:dataPhone, error:errorPhone}] = shopAPI.useSearchByPhoneMutation()
     const searchByEmailHandler = async (e:React.MouseEvent<Element,MouseEvent>) => {
         e.preventDefault()
@@ -35,6 +35,7 @@ const History = () => {
         await searchByPhone(phone)
         setData('phone')
     }
+    console.log(dataEmail)
     // @ts-ignore
     return (
         <main className={styles.history}>

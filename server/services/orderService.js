@@ -32,7 +32,7 @@ class OrderService {
         const ordersData = await Order.findAll({where: {userEmail:email}})
 
         if (!ordersData || ordersData.length === 0){
-            return {error:'Please enter valid data.'}
+            return new Error('Enter valid data.')
         }
         return await Promise.all(ordersData.map(async (order) => {
             const productOrder = await ProductOrderService.getProductOrder(order.dataValues.id)
@@ -47,7 +47,7 @@ class OrderService {
         const ordersData = await Order.findAll({where: {userEmail:phone}})
 
         if (!ordersData || ordersData.length === 0){
-            return {error:'Please enter valid data.'}
+            return new Error('Enter valid data.')
         }
         return await Promise.all(ordersData.map(async (order) => {
             const productOrder = await ProductOrderService.getProductOrder(order.dataValues.id)
