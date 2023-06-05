@@ -10,7 +10,7 @@
 - Typescript
 - Reduxtoolkit
 - RTK Query
-##Products delivery app. 
+## Products delivery app. 
 #### For production used:
 - PostgreQSL database: https://railway.app/ 
 - ExpressJS server: https://railway.app/ 
