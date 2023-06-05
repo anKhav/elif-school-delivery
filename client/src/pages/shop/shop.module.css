@@ -1,18 +1,35 @@
 .shop{
     display: flex;
-    width: 100vw;
+    width: 100%;
     gap: 20px;
 }
 .aside{
-    width: 400px;
+    width: 30%;
+    max-width: 400px;
+    min-width: 250px;
 }
 .default{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: calc(100% - 400px);
     font-size: 24px;
     line-height: 26px;
     font-weight: bold;
     color: var(--primary-color--dark);
+}
+
+@media (max-width: 992px) {
+    .shop{
+        flex-direction: column;
+        height: calc(100vh - 150px);
+    }
+    .aside{
+        width: 100%;
+        max-width: 100%;
+    }
+    .default{
+        height: 100%;
+        width: 100%;
+    }
 }

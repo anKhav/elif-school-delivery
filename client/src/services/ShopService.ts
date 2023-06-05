@@ -24,7 +24,7 @@ export const shopAPI = createApi({
                 url:`/order/email`,
                 method:"POST",
                 body:{
-                    userEmail:email
+                    email
                 }
             })
         }),

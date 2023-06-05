@@ -3,15 +3,17 @@ import MyInput from "../../components/UI/MyInput/MyInput.tsx";
 import MyButton from "../../components/UI/MyButton/MyButton.tsx";
 import {shopAPI} from "../../services/ShopService.ts";
 import {useState} from "react";
+import Order from "../../components/order/order.tsx";
 
 const History = () => {
     const [email, setEmail] = useState('')
-    const [searchByEmail, {error, isLoading}] = shopAPI.useSearchByEmailMutation()
+    const [searchByEmail, {error, isLoading, data}] = shopAPI.useSearchByEmailMutation()
     const search = async (e) => {
         e.preventDefault()
         await searchByEmail(email)
 
     }
+    console.log(data);
     return (
         <main className={styles.history}>
             <form>
@@ -21,22 +23,11 @@ const History = () => {
             </form>
             <section className={styles.content}>
                 <ul className={styles.order__list}>
-                    <div className={styles.order}>
-                        <div className="product">
-                            <div className={styles.image}></div>
-                            <div className={styles.order__content}>
-                                <h3 className={styles.name}>Big Burger</h3>
-                                <span className={styles.price}>999</span>
-                            </div>
-                        </div>
-                        <div className="product">
-                            <div className={styles.image}></div>
-                            <div className={styles.order__content}>
-                                <h3 className={styles.name}>Big Burger</h3>
-                                <span className={styles.price}>999</span>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        data && data.map(order => {
+                            return <Order products={order.products} userName={order.userName}/>
+                        })
+                    }
                 </ul>
                 <h2 className={styles.totalPrice}>999</h2>
             </section>

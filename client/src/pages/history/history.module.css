@@ -1,10 +1,15 @@
 .history{}
 .form{}
-.content{}
+.content{
+    overflow: scroll;
+}
 .order{}
 .image{}
 .order__content{}
-.order__list{}
+.order__list{
+    overflow: scroll;
+    max-height: calc(100vh - 200px);
+}
 .name{}
 .price{}
 .product{}

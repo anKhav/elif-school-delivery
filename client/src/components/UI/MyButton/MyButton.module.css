@@ -24,3 +24,8 @@
     color: var(--primary-color--dark);
     cursor: not-allowed;
 }
+@media (max-width: 768px) {
+    .button{
+        align-self: center;
+    }
+}

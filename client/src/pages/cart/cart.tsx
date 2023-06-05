@@ -65,7 +65,7 @@ const Cart = () => {
                 </Aside>
             </aside>
             <section className={styles.orders}>
-                {cart.length !==0 ? <CartProductList cart={cart}/> : <div>Cart is empty</div>}
+                {cart.length !==0 ? <CartProductList cart={cart}/> : <div className={styles.empty}>Cart is empty</div>}
             </section>
             <section className={styles.footer}>
                 <p>Total price:<span>{totalPrice}$</span></p>

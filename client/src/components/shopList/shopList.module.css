@@ -17,3 +17,21 @@
 .title{
     text-align: center;
 }
+@media (max-width: 992px) {
+    .nav{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-width: 100%;
+        padding: 20px 0;
+    }
+    .list{
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 0 10px;
+    }
+    .title{
+        flex-basis: 100%;
+    }
+}

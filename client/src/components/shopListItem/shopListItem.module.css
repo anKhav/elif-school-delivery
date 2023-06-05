@@ -18,3 +18,9 @@
 .active{
     background-color:var(--secondary-color--light);
 }
+@media (max-width: 992px) {
+    .shop{
+        padding: 10px 5px;
+        height: 50px;
+    }
+}
