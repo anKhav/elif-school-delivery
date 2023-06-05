@@ -28,6 +28,15 @@ export const shopAPI = createApi({
                 }
             })
         }),
+        searchByPhone: builder.mutation<Order[]>({
+            query:(email) => ({
+                url:`/order/phone`,
+                method:"POST",
+                body:{
+                    phone
+                }
+            })
+        }),
         createOrder: builder.mutation<Order>({
             query:(order) =>({
                 url:'/order',

@@ -105,12 +105,17 @@
     .cart{
         flex-direction: column;
     }
+    .aside__list{
+        padding: 20px;
+    }
     .aside{
         order: 2;
         width: 100vw;
         max-width: 100%;
-        height: calc(50vh - 100px);
+        height: calc(50vh - 150px);
         overflow-y: scroll;
+        border: 1px solid var(--primary-color--dark);
+        border-radius: 10px;
     }
     .orders{
         order: 1;

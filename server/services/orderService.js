@@ -34,36 +34,27 @@ class OrderService {
         if (!ordersData || ordersData.length === 0){
             return {error:'Please enter valid data.'}
         }
-
-
-        const orders = await Promise.all(ordersData.map(async (order) => {
-            const productOrder =  await ProductOrderService.getProductOrder(order.dataValues.id)
+        return await Promise.all(ordersData.map(async (order) => {
+            const productOrder = await ProductOrderService.getProductOrder(order.dataValues.id)
             const products = await Promise.all(productOrder.map(async (product) => {
-                const res = await ProductService.get(product.productId)
-                return res
+                return await ProductService.get(product.productId)
             }))
-            return {...order.dataValues,products}
-            }))
-
-        return orders
+            return {...order.dataValues, products}
+        }))
     }
 
-    // const orders = await Promise.all(ordersData.map(async (order) => {
-    //     return await ProductOrderService.getProductOrder(order.dataValues.id)
-    // }))
-    async getOrdersByPhone(phone) {
-        const ordersData = await Order.findAll({where: {userPhone:phone}})
+    async getOrdersByPhone (phone) {
+        const ordersData = await Order.findAll({where: {userEmail:phone}})
+
         if (!ordersData || ordersData.length === 0){
             return {error:'Please enter valid data.'}
         }
-
         return await Promise.all(ordersData.map(async (order) => {
-            return {
-                orders:{
-                    ...order.dataValues,
-                    products: await ProductOrderService.getProductOrder(order.id)
-                }
-            }
+            const productOrder = await ProductOrderService.getProductOrder(order.dataValues.id)
+            const products = await Promise.all(productOrder.map(async (product) => {
+                return await ProductService.get(product.productId)
+            }))
+            return {...order.dataValues, products}
         }))
     }
 }

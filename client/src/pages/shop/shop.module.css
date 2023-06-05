@@ -27,6 +27,9 @@
     .aside{
         width: 100%;
         max-width: 100%;
+        border:1px solid var(--primary-color--dark);
+        border-radius: 10px;
+        box-sizing: border-box;
     }
     .default{
         height: 100%;
