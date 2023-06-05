@@ -1,29 +1,29 @@
 
-import styles from "../../pages/history/history.module.css";
+import styles from "./order.module.css";
 import {Product} from "../../models/product.ts";
+import {SERVER_URL} from '../../consts'
 interface Props {
     products:Product[],
-    userName:string,
+    userName?:string,
+    totalPrice:number
 }
 
-const Order = ({products, userName}:Props) => {
+const Order = ({products, totalPrice}:Props) => {
     return (
         <div className={styles.order}>
-            <h2>{userName}</h2>
-            <div className="product">
-                <div className={styles.image}></div>
-                <div className={styles.order__content}>
-                    <h3 className={styles.name}>Big Burger</h3>
-                    <span className={styles.price}>999</span>
-                </div>
-            </div>
-            <div className="product">
-                <div className={styles.image}></div>
-                <div className={styles.order__content}>
-                    <h3 className={styles.name}>Big Burger</h3>
-                    <span className={styles.price}>999</span>
-                </div>
-            </div>
+            <span className={styles.price}>TotalPrice:{totalPrice}$</span>
+            {
+                products.map(product => {
+                    return (
+                        <div key={`o-p-${product.id}`} className={styles.product}>
+                            <div className={styles.product_content}>
+                                <img className={styles.image} src={`${SERVER_URL}${product.image}`} alt={product.name}/>
+                                <h3 className={styles.name}>{product.name}r</h3>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 };

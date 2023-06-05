@@ -1,8 +1,5 @@
 import styles from './shopListItem.module.css'
 import {NavLink} from "react-router-dom";
-// @ts-ignore
-import {makeRightUrlStr} from "../../utils/functions.js"
-import {useAppSelector} from "../../hooks/redux.ts";
 interface Props {
     name:string,
     id:number

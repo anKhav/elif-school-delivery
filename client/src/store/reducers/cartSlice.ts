@@ -4,13 +4,9 @@ import {CartProductInterface} from "../../models/cartProduct";
 
 interface CartState {
     cart:CartProductInterface[],
-    currentShop:number,
-    totalPrice:number
 }
 const initialState:CartState = {
     cart:[],
-    currentShop:0,
-    totalPrice:0
 }
 
 export const cartSlice = createSlice({
@@ -33,7 +29,6 @@ export const cartSlice = createSlice({
                 return item.name === payload.name
             })
             if(itemIndex >= 0){
-                console.log('dec')
                 state.cart[itemIndex].amount -= 1
             }
         },
@@ -42,12 +37,10 @@ export const cartSlice = createSlice({
                 return item.name === payload.name
             })
             if(itemIndex >= 0){
-                console.log('in')
                 state.cart[itemIndex].amount += 1
             }
         },
         setProductAmount:(state,{payload}) => {
-            console.log(payload);
             const itemIndex = state.cart.findIndex((item) => {
                 return item.name === payload.name
             })

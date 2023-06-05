@@ -7,29 +7,49 @@ import Order from "../../components/order/order.tsx";
 
 const History = () => {
     const [email, setEmail] = useState('')
-    const [searchByEmail, {error, isLoading, data}] = shopAPI.useSearchByEmailMutation()
-    const search = async (e) => {
+    const [phone, setPhone] = useState('')
+    const [data, setData] = useState('')
+    const [searchByEmail, {data:dataEmail, error:errorEmail}] = shopAPI.useSearchByEmailMutation()
+    const [searchByPhone, {data:dataPhone, error:errorPhone}] = shopAPI.useSearchByPhoneMutation()
+    const searchByEmailHandler = async (e:React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         await searchByEmail(email)
-
+        setData('email')
     }
-    console.log(data);
+    const searchByPhoneHandler = async (e:React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        await searchByPhone(phone)
+        setData('phone')
+    }
+    // @ts-ignore
     return (
         <main className={styles.history}>
-            <form>
+            <form className={styles.form}>
                 <MyInput type='email' label='Email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <MyButton label='Search by email' onClick={(e) => search(e)}/>
-                <MyInput type='phone' label='Phone' placeholder='Phone'/>
+                <MyButton label='Search by email' onClick={(e) => searchByEmailHandler(e)}/>
+            </form>
+            <form className={styles.form}>
+                <MyInput type='phone' label='Phone' placeholder='Phone' value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                <MyButton label='Search by phone' onClick={(e) => searchByPhoneHandler(e)}/>
             </form>
             <section className={styles.content}>
                 <ul className={styles.order__list}>
                     {
-                        data && data.map(order => {
-                            return <Order products={order.products} userName={order.userName}/>
-                        })
+                        data === 'email' ? (
+                            dataEmail && dataEmail.map((order):any => {
+                                return <Order totalPrice={order.totalPrice} products={order.products} userName={order.userName}/>
+                            })
+                        ) : (
+                            dataPhone && dataPhone.map((order):any => {
+                                return <Order totalPrice={order.totalPrice} products={order.products} userName={order.userName}/>
+                            })
+                        )
                     }
+                    {
+                        errorEmail || errorPhone ? <div>Orders not found</div>: <div></div>
+                    }
+
                 </ul>
-                <h2 className={styles.totalPrice}>999</h2>
             </section>
         </main>
     );

@@ -1,16 +1,18 @@
-.history{}
-.form{}
+.history{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 .content{
-    overflow: scroll;
+    overflow-y: scroll;
+    width: 100%;
+    height: 50vh;
 }
-.order{}
-.image{}
-.order__content{}
-.order__list{
-    overflow: scroll;
-    max-height: calc(100vh - 200px);
-}
-.name{}
-.price{}
-.product{}
-.totalPrice{}

@@ -14,7 +14,7 @@ interface formData {
     userAddress:string
 }
 const Cart = () => {
-    const {cart, totalPrice} = useAppSelector(state => state.cartReducer)
+    const {cart} = useAppSelector(state => state.cartReducer)
     useEffect(() => {
 
     }, [cart])
@@ -31,15 +31,16 @@ const Cart = () => {
         isSuccess && dispatch(clearCart())
         isSuccess && setFormData(initialState)
     }, [isSuccess])
+    const totalPrice = cart.reduce(function (acc, obj) { return acc + obj.price * obj.amount }, 0);
     const order = {
         products:[...cart],
         shopAddress:'Kyiv 2',
-        totalPrice:200,
+        totalPrice,
         ...formData
     }
 
     const isEmpty = Object.values(formData).every(x => x === null || x === '');
-    const orderHandler = async (e:React.EventHandler) => {
+    const orderHandler = async (e:React.MouseEvent<HTMLLabelElement>) => {
         e.preventDefault()
         await createOrder(order)
     }
@@ -47,18 +48,18 @@ const Cart = () => {
         <main className={styles.cart}>
             <aside className={styles.aside}>
                 <Aside>
-                    <form onSubmit={(e) => orderHandler(e)} className={styles.aside__list}>
+                    <form className={styles.aside__list}>
                             <li className={styles.aside__item}>
-                                <MyInput required={true} onChange={(e:React.ChangeEvent) => setFormData({...formData, userName:e.target.value})} value={formData.userName} type='text' label='Name:' placeholder='Name'/>
+                                <MyInput required={true} onChange={(e:React.FormEvent<HTMLInputElement>) => setFormData({...formData, userName:e.currentTarget.value})} value={formData.userName} type='text' label='Name:' placeholder='Name'/>
                             </li>
                            <li className={styles.aside__item}>
-                               <MyInput required={true} onChange={(e:React.ChangeEvent) => setFormData({...formData, userEmail:e.target.value})} type='email' value={formData.userEmail} label='Email:' placeholder='Email'/>
+                               <MyInput required={true} onChange={(e:React.FormEvent<HTMLInputElement>) => setFormData({...formData, userEmail:e.currentTarget.value})} type='email' value={formData.userEmail} label='Email:' placeholder='Email'/>
                            </li>
                            <li className={styles.aside__item}>
-                               <MyInput required={true} onChange={(e:React.ChangeEvent) => setFormData({...formData, userPhone:e.target.value})} type='phone' value={formData.userPhone} label='Phone:' placeholder='Phone'/>
+                               <MyInput required={true} onChange={(e:React.FormEvent<HTMLInputElement>) => setFormData({...formData, userPhone:e.currentTarget.value})} type='phone' value={formData.userPhone} label='Phone:' placeholder='Phone'/>
                            </li>
                             <li className={styles.aside__item}>
-                                <MyInput required={true} onChange={(e:React.ChangeEvent) => setFormData({...formData, userAddress:e.target.value})} type='address' value={formData.userAddress} label='Address:' placeholder='Address'/>
+                                <MyInput required={true} onChange={(e:React.FormEvent<HTMLInputElement>) => setFormData({...formData, userAddress:e.currentTarget.value})} type='address' value={formData.userAddress} label='Address:' placeholder='Address'/>
                             </li>
                         <input className={styles.display_none} id='submit-cart' type="submit" disabled={cart.length ===0} value='Submit'/>
                     </form>
@@ -69,7 +70,7 @@ const Cart = () => {
             </section>
             <section className={styles.footer}>
                 <p>Total price:<span>{totalPrice}$</span></p>
-                <label htmlFor="submit-cart" onClick={(e) => {(e) => orderHandler(e)}} className={`${styles.button} ${cart.length ===0 && styles.disabled} ${isEmpty && styles.disabled}`}>
+                <label htmlFor="submit-cart" onClick={(event) => {orderHandler(event)}} className={`${styles.button} ${cart.length ===0 && styles.disabled} ${isEmpty && styles.disabled}`}>
                     {
                         isLoading ? 'Loading...' : 'Submit'
                     }

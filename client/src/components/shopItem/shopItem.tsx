@@ -2,6 +2,7 @@ import styles from './shopItem.module.css'
 import MyButton from "../UI/MyButton/MyButton.tsx";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux.ts";
 import {setCartProduct} from "../../store/reducers/cartSlice.ts";
+import {SERVER_URL} from "../../consts.ts";
 interface Props {
     id:number,
     name:string,
@@ -20,10 +21,10 @@ const ShopItem = ({id, name, image, price, shopId}:Props) => {
         shopId
     }
     const {cart} = useAppSelector(state => state.cartReducer)
-    const sameShop = cart.filter(product => product.shopId !== shopId)
+    const sameShop = cart.filter(product => product?.shopId !== shopId)
     return (
         <div className={styles.product}>
-            <img className={styles.image} src={`https://elif-school-delivery-production.up.railway.app/${image}`} alt=""/>
+            <img className={styles.image} src={`${SERVER_URL}${image}`} alt=""/>
             <h4 className={styles.name}>{name}</h4>
             <span className={styles.price}>{price} $</span>
             <MyButton disabled={sameShop.length !== 0} label='Add to Cart' onClick={() => dispatch(setCartProduct(product))}/>

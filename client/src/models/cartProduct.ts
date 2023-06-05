@@ -3,5 +3,6 @@ export interface CartProductInterface{
     name:string,
     price:number,
     image:string,
-    amount:number
+    amount:number,
+    shopId?:number
 }

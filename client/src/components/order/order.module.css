@@ -1,0 +1,35 @@
+.order{
+    padding: 20px;
+    border: 1px solid var(--primary-color--dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    overflow-x: scroll;
+    margin-bottom: 20px;
+}
+/*.order:not(:last-child){*/
+/*    margin-bottom: 20px;*/
+/*}*/
+.product{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+}
+.product_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    height: 100%;
+}
+.image{
+    height: 100%;
+    width: auto;
+}
+.price{
+    font-size: 26px;
+    align-self: center;
+}

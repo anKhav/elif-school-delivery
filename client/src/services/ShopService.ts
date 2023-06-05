@@ -1,12 +1,12 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {Shop} from "../models/shop.ts";
 import {Data} from "../models/product.ts";
-import {Order} from "../models/order.ts";
+import {SERVER_URL} from "../consts.ts";
 
 export const shopAPI = createApi({
     reducerPath:'shopAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl:'https://elif-school-delivery-production.up.railway.app/api',
+        baseUrl:`${SERVER_URL}api`,
     }),
     endpoints:(builder) => ({
         fetchAllShops: builder.query<Shop[], number>({
@@ -19,7 +19,7 @@ export const shopAPI = createApi({
                 url:`/product/all/${id}`
             })
         }),
-        searchByEmail: builder.mutation<Order[]>({
+        searchByEmail: builder.mutation({
             query:(email) => ({
                 url:`/order/email`,
                 method:"POST",
@@ -28,8 +28,8 @@ export const shopAPI = createApi({
                 }
             })
         }),
-        searchByPhone: builder.mutation<Order[]>({
-            query:(email) => ({
+        searchByPhone: builder.mutation({
+            query:(phone) => ({
                 url:`/order/phone`,
                 method:"POST",
                 body:{
@@ -37,7 +37,7 @@ export const shopAPI = createApi({
                 }
             })
         }),
-        createOrder: builder.mutation<Order>({
+        createOrder: builder.mutation({
             query:(order) =>({
                 url:'/order',
                 method:'POST',
