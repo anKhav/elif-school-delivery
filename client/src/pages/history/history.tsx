@@ -11,12 +11,12 @@ const History = () => {
     const [data, setData] = useState('')
     const [searchByEmail, {data:dataEmail, error:errorEmail}] = shopAPI.useSearchByEmailMutation()
     const [searchByPhone, {data:dataPhone, error:errorPhone}] = shopAPI.useSearchByPhoneMutation()
-    const searchByEmailHandler = async (e:React.MouseEvent<HTMLButtonElement>) => {
+    const searchByEmailHandler = async (e:React.MouseEvent<Element,MouseEvent>) => {
         e.preventDefault()
         await searchByEmail(email)
         setData('email')
     }
-    const searchByPhoneHandler = async (e:React.MouseEvent<HTMLButtonElement>) => {
+    const searchByPhoneHandler = async (e:React.MouseEvent<Element,MouseEvent>) => {
         e.preventDefault()
         await searchByPhone(phone)
         setData('phone')
