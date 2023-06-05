@@ -5,7 +5,7 @@ const router = new Router()
 
 router.post('/',OrderController.create)
 router.post('/email',OrderController.getAllByEmail)
-router.get('/phone',OrderController.getAllByPhone)
+router.post('/phone',OrderController.getAllByPhone)
 
 
 module.exports = router

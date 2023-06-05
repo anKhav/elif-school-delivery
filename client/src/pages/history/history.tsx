@@ -23,8 +23,8 @@ const History = () => {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [data, setData] = useState('')
-    const [searchByEmail, {data:dataEmail, error:errorEmail, isError}] = shopAPI.useSearchByEmailMutation()
-    const [searchByPhone, {data:dataPhone, error:errorPhone}] = shopAPI.useSearchByPhoneMutation()
+    const [searchByEmail, {data:dataEmail}] = shopAPI.useSearchByEmailMutation()
+    const [searchByPhone, {data:dataPhone}] = shopAPI.useSearchByPhoneMutation()
     const searchByEmailHandler = async (e:React.MouseEvent<Element,MouseEvent>) => {
         e.preventDefault()
         await searchByEmail(email)
@@ -35,8 +35,6 @@ const History = () => {
         await searchByPhone(phone)
         setData('phone')
     }
-    console.log(isError)
-    // @ts-ignore
     return (
         <main className={styles.history}>
             <form className={styles.form}>
@@ -52,7 +50,6 @@ const History = () => {
                     {
                         data === 'email' ? (
                             dataEmail && dataEmail.map((order:Order):ReactElement => {
-                                console.log(order)
                                 return <Order totalPrice={order.totalPrice} products={order.products} userName={order.userName}/>
                             })
                         ) : (
@@ -62,7 +59,7 @@ const History = () => {
                         )
                     }
                     {
-                        errorEmail || errorPhone ? <div>Orders not found</div>: <div></div>
+                        dataEmail?.length === 0 || dataPhone?.length === 0 ? <div className={styles.not_found}>Orders not found</div>: <div></div>
                     }
 
                 </ul>
