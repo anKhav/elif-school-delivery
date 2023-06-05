@@ -28,11 +28,11 @@ class OrderService {
     async getOneOrder (orderId) {
         return await Order.findOne({where:{orderId}})
     }
-    async getOrdersByEmail (email) {
+    async getOrdersByEmail (email, next) {
         const ordersData = await Order.findAll({where: {userEmail:email}})
 
         if (!ordersData || ordersData.length === 0){
-            return new Error('Enter valid data.')
+            next(new Error('Enter correct data'))
         }
         return await Promise.all(ordersData.map(async (order) => {
             const productOrder = await ProductOrderService.getProductOrder(order.dataValues.id)
@@ -43,11 +43,11 @@ class OrderService {
         }))
     }
 
-    async getOrdersByPhone (phone) {
+    async getOrdersByPhone (phone, next) {
         const ordersData = await Order.findAll({where: {userEmail:phone}})
 
         if (!ordersData || ordersData.length === 0){
-            return new Error('Enter valid data.')
+            next(new Error('Enter correct data'))
         }
         return await Promise.all(ordersData.map(async (order) => {
             const productOrder = await ProductOrderService.getProductOrder(order.dataValues.id)

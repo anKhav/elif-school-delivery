@@ -35,7 +35,7 @@ const History = () => {
         await searchByPhone(phone)
         setData('phone')
     }
-    console.log(dataEmail)
+    console.log(isError)
     // @ts-ignore
     return (
         <main className={styles.history}>
