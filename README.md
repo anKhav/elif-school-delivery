@@ -77,4 +77,34 @@
  - api/product/all/:shop
   - method ```GET```get all product by shopId
     - response ```[{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date},{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date}...]```
+ - api/order
+   - method ```POST``` body ```{
+          "products":[
+              {
+                  "id": 2,
+              "name": "ChickenBurger",
+              "image": "f708739e-52a2-4974-b554-3a8e6caeddb6.jpg",
+              "price": 3,
+              "shopId": 2
+              },
+              {
+              "id": 4,
+              "name": "Cola",
+              "image": "ef76c230-5778-48d3-b31a-5e9955a3f8e0.jpg",
+              "price": 5,
+              "shopId": 2
+              }
+          ],
+          "userName": "Nick",
+          "userEmail":"gmail@mail.com",
+          "userPhone": "+38066456789671",
+          "userAddress":"Kyiv 1",
+          "shopAddress":"Kyiv 2"
+      }``` - create order
+  - api/order/email
+    - - method ```POST``` body ```email:string```
+      - response - list of orders 
+  - api/order/phone
+    - - method ```POST``` body ```phone:string```
+      - response - list of orders 
 
