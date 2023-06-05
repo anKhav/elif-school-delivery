@@ -1,16 +1,17 @@
 # Elif-school-delivery
-On server used following tech:
+#### On server used following tech:
 - ExpressJS
 - Sequelize
 - PostgreSQL
 - CORS
 - Nodemon
-On client used following tech:
+#### On client used following tech:
 - React
 - Typescript
 - Reduxtoolkit
 - RTK Query
-Products delivery app. For production used:
+##Products delivery app. 
+#### For production used:
 - PostgreQSL database: https://railway.app/ 
 - ExpressJS server: https://railway.app/ 
 - React client via Vite: https://vercel.com/ 
@@ -53,4 +54,27 @@ Products delivery app. For production used:
 - ```sequelize-cli db:seed:undo:all``` -revert all seed
 #### Note:can manage different databases by commands and their configuration in ./server/db/config/config.js and use in choosen enviroment by adding attribute ```--env:NODE_ENV```. For example in production env ```--env:production```
 # Warning: cartProduct amoun input can work uncorrect.
+## API endpoints from root url (for example: https://example.com/):
+- api/shop
+  - method ```POST``` body ```{name:string}``` create shop
+    - response ```{id:number,name:string,ctreatedAt:date,updatedAt:date}```
+  - method ```GET```get all shop 
+    - response ```[{id:number,name:string,ctreatedAt:date,updatedAt:date},{id:number,name:string,ctreatedAt:date,updatedAt:date}...]```
+- api/shop/:id
+  - method ```GET`` get shop by id
+    - response ```{id:number,name:string,ctreatedAt:date,updatedAt:date}```
+  - method ```DELETE`` delete shop by id
+- api/product
+  - method ```POST``` body ```{name:string, image:file, price:number, shopId:number}``` create product
+    - response ```{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date}``` 
+- api/product/all
+  - method ```GET```get all product 
+    - response ```[{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date},{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date}...]```
+- api/product/:id
+  - method ```GET`` get product by id
+    - response ```{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date}```
+  - method ```DELETE`` delete delete by id
+ - api/product/all/:shop
+  - method ```GET```get all product by shopId
+    - response ```[{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date},{id:number,name:string, image:file, price:number, shopId:number,ctreatedAt:date,updatedAt:date}...]```
 
