@@ -52,3 +52,5 @@ Products delivery app. For production used:
 - ```sequelize-cli db:seed``` -seed data
 - ```sequelize-cli db:seed:undo:all``` -revert all seed
 #### Note:can manage different databases by commands and their configuration in ./server/db/config/config.js and use in choosen enviroment by adding attribute ```--env:NODE_ENV```. For example in production env ```--env:production```
+# Warning: cartProduct amoun input can work uncorrect.
+
